@@ -1,0 +1,6 @@
+articles/*
+datasets/*
+docs/*
+play/course-pages/*
+pythonenv/*
+*.pyc
