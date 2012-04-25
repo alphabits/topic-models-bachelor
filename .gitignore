@@ -1,6 +1,7 @@
 articles/*
 datasets/*
-docs/*
+docs/web/*
+docs/_*
 play/course-pages/*
 pythonenv/*
 *.pyc
