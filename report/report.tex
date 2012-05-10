@@ -1,0 +1,230 @@
+%  PHDTHESIS TEMPLATE FILE
+%  Adopted from Thomas Fabricius and Henrik Aalborg Nielsen
+%  Jan Larsen, IMM, DTU, Nov 2003 ver 1.0
+%  Updated by Finn Kuno Christensen, fkc@imm.dtu.dk Aug 15, 2008
+
+%  COMPILATION STEPS USING INVOLVING A PS FILE
+%\documentclass[10pt,twoside,dvips]{book}
+%  latex phdthesis.tex
+%  dvips -D600 -Pamz -Pcmz -j0 phdthesis.dvi -o phdthesis.ps
+%  ps2pdf -sPAPERSIZE=b5 phdthesis.ps phdthesis.pdf (or use Acrobat Distiller)
+
+%  COMPILATION STEP USING PDFLATEX
+\documentclass[11pt,twoside]{book}
+%  pdflatex phdthesis.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+%\usepackage{python}
+\usepackage[round]{natbib}
+\usepackage{color}
+\usepackage{caption}
+\captionsetup{font={small,it},labelfont=bf}
+\usepackage{subfig}
+\usepackage{paralist}
+\definecolor{mygray}{RGB}{244,244,244}
+\definecolor{gray}{gray}{0.5}
+\definecolor{myredish}{RGB}{193,33,97}
+\definecolor{grayblue}{RGB}{91,112,142}
+\definecolor{myorange}{RGB}{255,134,0}
+\definecolor{green}{rgb}{0,0.4,0}
+\usepackage{tabularx}
+
+\usepackage[pdftex]{hyperref}
+\hypersetup{ 
+    colorlinks,% 
+    citecolor=grayblue,% 
+    filecolor=grayblue,% 
+    linkcolor=grayblue,% 
+    urlcolor=grayblue 
+}
+
+\newcommand\mydef[1]{\emph{#1}}
+\newcommand\mytodo[1]{\textbf{\textcolor{red}{TODO: #1}}}
+\newcommand\fn[1]{{\ttfamily\small #1}}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcommand\appref[1]{appendix \ref{app:#1}}
+\newcommand\mypagebreak{\vspace{\stretch{1}}\pagebreak}
+\newcommand\githuburl[1]{\url{https://github.com/alphabits/ford_challenge/tree/master/#1}}
+\newcommand\githublisting[2]{\lstinputlisting[caption=\githuburl{#2}]{#1#2}}
+\newcommand\norm[1]{||\,#1\,||}
+\newcommand\ve[1]{\boldsymbol{#1}}
+\newcommand\varop[1]{\text{Var}\,[#1]}
+\newcommand\expop[1]{\text{E}\,[#1]}
+\newcommand\covop[1]{\text{Cov}\,[#1]}
+\newcommand\myimp{\quad\quad\Leftrightarrow}
+\newcommand\myreal{\mathbb{R}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Ptx{P(t|\ve{x})}
+\newcommand\PtxHat{\widehat{P}(t|\ve{x})}
+\newcommand\mle{\widehat{\ve{w}}}
+\newcommand\Lx{\ve{w}^T\ve{x}+w_0}
+\newcommand\Err{\text{Err}}
+\newcommand\err{\overline{\text{err}}}
+\newcommand\mytr[1]{\small\Tr{#1}}
+\newcommand\CI[2]{\mathbb{P}(\mu_{AUC} \in [#1, #2]) = 95\%}
+\newcommand\folder[1]{{\ttfamily #1}}
+
+% Control spacing around hline in table
+% Read more at: https://www.msu.edu/~harris41/latex_tablespacing.html
+\newcommand\T{\rule{0pt}{2.6ex}}
+\newcommand\B{\rule[-1.2ex]{0pt}{0pt}}
+
+
+\renewcommand\thefootnote{\fnsymbol{footnote}}
+
+\usepackage{lmodern}
+\usepackage{fouriernc}
+\usepackage{eucal}
+\usepackage{multirow}
+\usepackage[scaled]{beramono}
+\usepackage{listings}
+\lstset {                 % A rudimentary config that shows off some features.
+    language=Python,
+    basicstyle=\scriptsize\ttfamily, % Without beramono, we'd get cmtt, the teletype font.
+    commentstyle=\textit, % cmtt doesn't do italics. It might do slanted text though.
+    keywordstyle=\bfseries,
+    framextopmargin=4pt,
+    framexbottommargin=4pt,
+    framexleftmargin=4pt,
+    framexrightmargin=4pt,
+    xleftmargin=4pt,
+    xrightmargin=4pt,
+    backgroundcolor=\color{mygray},
+    frame=single,
+    showstringspaces=false,
+    captionpos=b,
+    tabsize=4            % Or whatever you use in your editor, I suppose.
+}
+
+\renewcommand{\lstlistlistingname}{Code Listings}
+\renewcommand{\lstlistingname}{Code Listing}
+
+\lstset{
+    language=python,
+    stringstyle=\color{myorange},
+    showstringspaces=false,
+    alsoletter={1234567890},
+    otherkeywords={\ , \}, \{},
+    keywordstyle=\color{blue},
+    emph={access,and,break,class,continue,def,del,elif ,else,%
+    except,exec,finally,for,from,global,if,import,in,i s,%
+    lambda,not,or,pass,print,raise,return,try,while},
+    emphstyle=\color{myredish}\bfseries,
+    emph={[2]True, False, None, self, __file__},
+    emphstyle=[2]\color{green},
+    emph={[3]from, import, as},
+    emphstyle=[3]\color{blue},
+    upquote=true,
+    morecomment=[s]{"""}{"""},
+    commentstyle=\color{gray}\slshape,
+    emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+    emphstyle=[4]\color{blue},
+    literate=*{:}{{\textcolor{blue}:}}{1}%
+    {=}{{\textcolor{blue}=}}{1}%
+    {-}{{\textcolor{blue}-}}{1}%
+    {+}{{\textcolor{blue}+}}{1}%
+    {*}{{\textcolor{blue}*}}{1}%
+    {!}{{\textcolor{blue}!}}{1}%
+    {(}{{\textcolor{blue}(}}{1}%
+    {)}{{\textcolor{blue})}}{1}%
+    {[}{{\textcolor{blue}[}}{1}%
+    {]}{{\textcolor{blue}]}}{1}%
+    {<}{{\textcolor{blue}<}}{1}%
+    {>}{{\textcolor{blue}>}}{1},%
+    rulesepcolor=\color{blue}
+}
+
+
+
+%% Define a new 'leo' style for the url package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+
+
+%%%%%%%%%%% MODIFY THESE LINES ONLY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\thesisyear{1. september 2012} % Year thesis submitted
+\def\thesisnumber{70}  % Only number no year
+\def\thesisauthor{Anders Hørsted - s082382} % Thesis author
+\def\thesistitle{Topic Models} % Title of thesis
+\def\thesiskeywords{mathematical modelling}
+\def\thesisISBN{} %OBSOBS provide ISBN number for industrial phd students ONLY
+\def\thesisversion{print} %OBSOBS choose this for printed version send to printing
+%\def\thesisversion{net} %OBSOBS choose this for the net version for the web and publication database
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%% DO NOT MODIFY START %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{immphddef.sty}
+%%%%%%%%%%%%%%% DO NOT MODIFY END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%PREFACE CHAPTERS INCLUDE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{summary}
+\markboth{}{}
+\input{resume}
+\markboth{}{}
+\input{preface}
+\markboth{}{}
+\input{acknowledge}
+\markboth{}{}
+%%%%%%%PREFACE CHAPTERS INCLUDE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage\mbox{}\newpage
+\chaptermark{Contents}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\sectionmark{Contents}
+\addtolength{\parskip}{-\baselineskip}
+\tableofcontents
+\addtolength{\parskip}{\baselineskip}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\mainmatter
+% Chapter 1, 2, ...
+%%%%%%%MAIN CHAPTERS INCLUDE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{chapters/introduction}
+%\include{chapters/the-competition}
+%\include{chapters/data-exploration}
+%\include{chapters/theory-of-classification}
+%\include{chapters/recreating-winning-approach}
+%\include{chapters/improving-winning-approach}
+%\include{chapters/other-classification-methods}
+%\include{chapters/result-summary}
+%\include{chapters/toolset}
+%\include{chapters/discussion}
+%\include{chapters/conclusion}
+
+%%%%%%%APPENDIX CHAPTERS INCLUDE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{alphasect}
+\addtocounter{alphasect}{1}
+\renewcommand{\thechapter}{\Alph{alphasect}}
+%\include{chapters/appendices}
+% Appendix A, B, ...
+%\include{Appendix1}
+%\include{paper1}
+%\include{paper2}
+
+
+\backmatter
+
+\nocite{bishop06}
+\chaptermark{Bibliography}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\sectionmark{Bibliography}
+
+%%%%%%%BIBLIOGRAPHY INCLUDE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliography{../bibliography}    % Bibliography
+%\bibliographystyle{plainnat}
+\bibliographystyle{anders}
+
+
+\end{document}

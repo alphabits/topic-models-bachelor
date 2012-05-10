@@ -13,7 +13,7 @@ List of tasks
 Week 1 and 2
 ............
 
-  * Read about general theory of graphical models
+  * :doc:`Read about general theory of graphical models </week-1>`
 
   * Read about theory of LDA and hLDA
 
