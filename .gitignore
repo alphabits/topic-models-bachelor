@@ -4,4 +4,10 @@ docs/web/*
 docs/_*
 play/course-pages/*
 pythonenv/*
+report/*.log
+report/*.out
+report/*.blg
+report/*.bbl
+report/*.aux
+report/*.toc
 *.pyc
